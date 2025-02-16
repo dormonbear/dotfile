@@ -51,6 +51,9 @@ return {
       "yaml",
       "css",
       "styled",
+      "apex",
+      "soql",
+      "sosl",
     },
     incremental_selection = {
       enable = true,
