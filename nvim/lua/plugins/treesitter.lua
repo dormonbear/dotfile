@@ -72,6 +72,16 @@ return {
         goto_previous_start = { ["[f"] = "@function.outer", ["[c"] = "@class.outer", ["[a"] = "@parameter.inner" },
         goto_previous_end = { ["[F"] = "@function.outer", ["[C"] = "@class.outer", ["[A"] = "@parameter.inner" },
       },
+      select = {
+        enable = true,
+        lookahead = true,
+        keymaps = {
+          ["at"] = "@attribute.outer",
+          ["it"] = "@attribute.inner",
+          ["af"] = "@function.outer",
+          ["if"] = "@function.inner",
+        },
+      },
     },
   },
   ---@param opts TSConfig
