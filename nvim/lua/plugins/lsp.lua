@@ -95,6 +95,69 @@ return {
           },
         },
         apex_ls = {},
+        eslint = {
+          -- 使用新的命令行参数
+          cmd = {
+            "eslint",
+            "--stdin",
+            "--stdin-filename",
+            "%filepath",
+            "--format",
+            "json",
+          },
+          settings = {
+            -- 启用新配置支持
+            experimental = {
+              useFlatConfig = true,
+            },
+            -- 工作目录设置
+            workingDirectory = {
+              mode = "auto",
+            },
+            -- 验证设置
+            validate = "on",
+            -- 代码行为设置
+            codeAction = {
+              disableRuleComment = {
+                enable = true,
+                location = "separate-line",
+              },
+              showDocumentation = {
+                enable = true,
+              },
+            },
+            -- 格式化设置
+            format = true,
+            -- 问题显示设置
+            problems = {
+              shortenToSingleLine = false,
+            },
+          },
+          -- 文件类型
+          filetypes = {
+            "javascript",
+            "javascriptreact",
+            "javascript.jsx",
+            "typescript",
+            "typescriptreact",
+            "typescript.tsx",
+            "vue",
+            "svelte",
+            "astro",
+          },
+          -- 根目录检测
+          root_dir = require("lspconfig").util.root_pattern(
+            "eslint.config.js", -- 新的 flat config
+            "eslint.config.mjs", -- 新的 flat config
+            ".eslintrc.js", -- 传统配置
+            ".eslintrc.json",
+            "package.json"
+          ),
+          -- 初始化选项
+          init_options = {
+            nodeEnv = "production",
+          },
+        },
       },
       -- you can do any additional lsp server setup here
       -- return true if you don't want this server to be setup with lspconfig
