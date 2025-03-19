@@ -54,6 +54,7 @@ return {
       "apex",
       "soql",
       "sosl",
+      "sql",
     },
     incremental_selection = {
       enable = true,
