@@ -226,6 +226,10 @@ alt-shift-j = ['join-with down', 'mode main']
 alt-shift-k = ['join-with up', 'mode main']
 alt-shift-l = ['join-with right', 'mode main']
 
+[workspace-to-monitor-force-assignment]
+1 = 'main'
+2 = ['built-in']
+
 [[on-window-detected]]
 if.app-id = 'com.apple.Safari'
 if.window-title-regex-substring = "Default —.*"
