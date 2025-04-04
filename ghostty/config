@@ -3,7 +3,7 @@ font-size = 14
 theme = catppuccin-mocha
 shell-integration-features = no-cursor,sudo,no-title
 cursor-style = block
-adjust-cell-height = 10%
+adjust-cell-height = 5%
 # background-opacity = 0.96
 
 mouse-hide-while-typing = true
@@ -26,6 +26,8 @@ keybind = ctrl+a>n=new_window
 keybind = ctrl+a>c=new_tab
 keybind = ctrl+a>shift+l=next_tab
 keybind = ctrl+a>shift+h=previous_tab
+keybind = cmd+shift+;=previous_tab
+keybind = cmd+shift+'=next_tab
 keybind = ctrl+a>comma=move_tab:-1
 keybind = ctrl+a>period=move_tab:1
 
@@ -47,8 +49,6 @@ keybind = ctrl+a>-=new_split:down
 # resize
 keybind = cmd+shift+k=resize_split:up,10
 keybind = cmd+shift+j=resize_split:down,10
-keybind = cmd+shift+h=resize_split:left,10
-keybind = cmd+shift+l=resize_split:right,10
 
 keybind = ctrl+a>j=goto_split:bottom
 keybind = ctrl+a>k=goto_split:top

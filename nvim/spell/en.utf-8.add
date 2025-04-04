@@ -5,3 +5,7 @@ upsert
 dayjs
 filterDropdown
 Dropdown
+WORKDIR/!
+pnpm/!
+salesforce/!
+salesforceInfo/!
