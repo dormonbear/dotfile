@@ -71,6 +71,7 @@ sketchybar --default "${defaults[@]}"
 # Left
 source "$ITEM_DIR/apple.sh"
 source "$ITEM_DIR/aerospace.sh"
+source "$PLUGIN_DIR/appearance.sh"
 
 # Center
 # source "$ITEM_DIR/spotify.sh"

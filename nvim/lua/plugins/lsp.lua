@@ -94,7 +94,9 @@ return {
             },
           },
         },
-        apex_ls = {},
+        apex_ls = {
+          apex_jar_path = "/Users/dormonzhou/apex-jorje-lsp.jar",
+        },
         eslint = {
           -- 使用新的命令行参数
           cmd = {
