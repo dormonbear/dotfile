@@ -96,46 +96,54 @@ return {
         },
         apex_ls = {
           apex_jar_path = "/Users/dormonzhou/apex-jorje-lsp.jar",
-        },
-        eslint = {
-          -- 使用新的命令行参数
+          mason = false, -- Don't manage with mason since it's manually installed
           cmd = {
-            "eslint",
-            "--stdin",
-            "--stdin-filename",
-            "%filepath",
-            "--format",
-            "json",
+            "java",
+            "-jar",
+            "/Users/dormonzhou/apex-jorje-lsp.jar",
           },
+          filetypes = { "apex" },
+          root_dir = require("lspconfig").util.root_pattern("sfdx-project.json", ".git"),
+          settings = {},
+        },
+        
+        -- ESLint LSP configuration (simplified and fixed)
+        eslint = {
+          -- Use ESLint LSP instead of direct command
+          cmd = { "vscode-eslint-language-server", "--stdio" },
           settings = {
-            -- 启用新配置支持
-            experimental = {
-              useFlatConfig = true,
-            },
-            -- 工作目录设置
-            workingDirectory = {
-              mode = "auto",
-            },
-            -- 验证设置
-            validate = "on",
-            -- 代码行为设置
             codeAction = {
               disableRuleComment = {
                 enable = true,
-                location = "separate-line",
+                location = "separateLine"
               },
               showDocumentation = {
-                enable = true,
-              },
+                enable = true
+              }
             },
-            -- 格式化设置
-            format = true,
-            -- 问题显示设置
+            codeActionOnSave = {
+              enable = false,
+              mode = "all"
+            },
+            experimental = {
+              useFlatConfig = false
+            },
+            format = false, -- Use prettier for formatting instead
+            nodePath = "",
+            onIgnoredFiles = "off",
+            packageManager = "npm",
             problems = {
-              shortenToSingleLine = false,
+              shortenToSingleLine = false
             },
+            quiet = false,
+            rulesCustomizations = {},
+            run = "onType",
+            useESLintClass = false,
+            validate = "on",
+            workingDirectory = {
+              mode = "auto"
+            }
           },
-          -- 文件类型
           filetypes = {
             "javascript",
             "javascriptreact",
@@ -145,20 +153,16 @@ return {
             "typescript.tsx",
             "vue",
             "svelte",
-            "astro",
           },
-          -- 根目录检测
           root_dir = require("lspconfig").util.root_pattern(
-            "eslint.config.js", -- 新的 flat config
-            "eslint.config.mjs", -- 新的 flat config
-            ".eslintrc.js", -- 传统配置
+            "eslint.config.js",
+            "eslint.config.mjs", 
+            ".eslintrc.js",
             ".eslintrc.json",
+            ".eslintrc.yaml",
+            ".eslintrc.yml",
             "package.json"
           ),
-          -- 初始化选项
-          init_options = {
-            nodeEnv = "production",
-          },
         },
       },
       -- you can do any additional lsp server setup here

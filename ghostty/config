@@ -72,3 +72,4 @@ window-padding-x = 5
 # 统一垂直边距
 window-padding-y = 5
 window-save-state = "always"
+keybind = shift+enter=text:\n
