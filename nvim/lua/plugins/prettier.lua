@@ -21,16 +21,6 @@ return {
         graphql = { "prettier" },
         lua = { "stylua" },
       },
-      -- 设置格式化时的行为
-      format_on_save = {
-        -- 这些配置意味着：
-        -- 1. 默认开启格式化
-        -- 2. 允许使用快捷键临时关闭格式化
-        -- 3. 支持 timeout
-        lsp_fallback = true,
-        async = false,
-        timeout_ms = 500,
-      },
     },
     -- 快捷键配置
     keys = {

@@ -22,7 +22,7 @@ function M.setup_apex_lsp()
   end
   
   local apex_config = {
-    cmd = { "java", "-jar", jar_path },
+    cmd = { "java", "-Xmx2G", "-jar", jar_path },
     filetypes = { "apex" },
     root_dir = lspconfig.util.root_pattern("sfdx-project.json", ".git"),
     settings = {},
@@ -75,10 +75,11 @@ function M.auto_connect_apex_lsp()
   vim.defer_fn(function()
     local clients_after = vim.lsp.get_active_clients({ bufnr = bufnr })
     if #clients_after == 0 then
-      local root_dir = vim.lsp.util.root_pattern("sfdx-project.json", ".git")(vim.fn.expand("%:p:h"))
+      local lspconfig_util = require("lspconfig").util
+      local root_dir = lspconfig_util.root_pattern("sfdx-project.json", ".git")(vim.fn.expand("%:p:h"))
       
       vim.lsp.start({
-        cmd = { "java", "-jar", "/Users/dormonzhou/apex-jorje-lsp.jar" },
+        cmd = { "java", "-Xmx2G", "-jar", "/Users/dormonzhou/apex-jorje-lsp.jar" },
         filetypes = { "apex" },
         root_dir = root_dir or vim.fn.getcwd(),
         name = "apex_ls",

@@ -58,5 +58,7 @@ vim.api.nvim_create_autocmd('FileType', {
     vim.bo.tabstop = 2
     vim.bo.shiftwidth = 2
     vim.bo.expandtab = true
+    -- Ensure treesitter highlighting is enabled
+    vim.cmd([[TSBufEnable highlight]])
   end,
 }) 

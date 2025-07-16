@@ -127,6 +127,19 @@ map("n", "<leader>d", vim.diagnostic.open_float, { desc = "Show diagnostic" })
 -- map("n", "<leader>sf", function() -- Open SObject TypeScript definition file
 -- map("n", "<leader>sl", function() -- Lookup SObject by name with input prompt
 
+-- Salesforce deployment
+map("n", "<leader>sd", function()
+  local file_path = vim.fn.expand("%:p")
+  local cmd = "sf project deploy start --source-dir " .. file_path
+  local Terminal = require("toggleterm.terminal").Terminal
+  local deploy_term = Terminal:new({
+    cmd = cmd,
+    direction = "horizontal",
+    close_on_exit = false,
+  })
+  deploy_term:toggle()
+end, { desc = "Deploy current file to Salesforce" })
+
 -- Original sf.nvim shortcuts
 -- map("n", "<leader>ms", -- SF set target org
 -- map("n", "<leader>mS", -- SF set global target org

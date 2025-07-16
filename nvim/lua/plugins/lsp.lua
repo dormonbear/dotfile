@@ -99,11 +99,19 @@ return {
           mason = false, -- Don't manage with mason since it's manually installed
           cmd = {
             "java",
+            "-Xmx2G",
             "-jar",
             "/Users/dormonzhou/apex-jorje-lsp.jar",
           },
           filetypes = { "apex" },
           root_dir = require("lspconfig").util.root_pattern("sfdx-project.json", ".git"),
+          settings = {},
+        },
+        
+        -- HTML LSP for Visualforce files
+        html = {
+          filetypes = { "html", "visualforce" },
+          root_dir = require("lspconfig").util.root_pattern("sfdx-project.json", ".git", "package.json"),
           settings = {},
         },
         

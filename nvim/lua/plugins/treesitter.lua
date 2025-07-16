@@ -91,5 +91,8 @@ return {
       opts.ensure_installed = LazyVim.dedup(opts.ensure_installed)
     end
     require("nvim-treesitter.configs").setup(opts)
+    
+    -- Configure Visualforce to use HTML parser
+    vim.treesitter.language.register("html", "visualforce")
   end,
 }

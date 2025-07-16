@@ -1,0 +1,107 @@
+# Local customizations for oh-my-tmux
+# This file preserves your custom keybindings while using oh-my-tmux
+
+# Change prefix from default C-b to C-a (as in your original config)
+set -g prefix C-a
+unbind C-b
+bind C-a send-prefix
+
+# Your custom keybindings (mirroring Ghostty's patterns)
+# Windows (tabs)
+bind t new-window                          # Like Ghostty's super+t
+bind w kill-window                         # Like Ghostty's super+w  
+bind q kill-server                         # Like Ghostty's super+q
+
+# Tab navigation (using numbers like Ghostty)
+bind 1 select-window -t 1                 # Like Ghostty's super+1
+bind 2 select-window -t 2                 # Like Ghostty's super+2
+bind 3 select-window -t 3                 # Like Ghostty's super+3
+bind 4 select-window -t 4                 # Like Ghostty's super+4
+bind 5 select-window -t 5                 # Like Ghostty's super+5
+bind 6 select-window -t 6                 # Like Ghostty's super+6
+bind 7 select-window -t 7                 # Like Ghostty's super+7
+bind 8 select-window -t 8                 # Like Ghostty's super+8
+bind 9 select-window -t 9                 # Like Ghostty's super+9
+
+# Tab navigation with brackets (like Ghostty)
+bind [ previous-window                     # Like Ghostty's super+[
+bind ] next-window                         # Like Ghostty's super+]
+
+# Pane management (mirroring Ghostty's split behavior)
+bind d split-window -h                     # Like Ghostty's super+d (right split)
+bind D split-window -v                     # Like Ghostty's super+shift+d (down split)
+bind - split-window -v                     # Alternative down split
+bind | split-window -h                     # Shift+\ (|) for horizontal split
+
+# Pane navigation (using hjkl like Ghostty's arrow keys)
+bind h select-pane -L                      # Like Ghostty's super+alt+left
+bind j select-pane -D                      # Like Ghostty's super+alt+down  
+bind k select-pane -U                      # Like Ghostty's super+alt+up
+bind l select-pane -R                      # Like Ghostty's super+alt+right
+
+# Pane resizing (like Ghostty's resize bindings)
+bind H resize-pane -L 5                   # Like Ghostty's super+ctrl+left
+bind J resize-pane -D 5                   # Like Ghostty's super+shift+j
+bind K resize-pane -U 5                   # Like Ghostty's super+shift+k
+bind L resize-pane -R 5                   # Like Ghostty's super+ctrl+right
+
+# Pane management
+bind x kill-pane                           # Like Ghostty's ctrl+a>x
+bind z resize-pane -Z                      # Like Ghostty's super+enter (zoom)
+bind e select-layout even-horizontal       # Like Ghostty's super+ctrl+equal
+
+# Copy mode (like Ghostty's selection)
+bind a select-pane -t :.+                  # Like Ghostty's super+a
+bind v copy-mode                           # Enter copy mode
+bind p paste-buffer                        # Like Ghostty's super+v
+
+# Reload config (like Ghostty) - override oh-my-tmux's 'r' binding
+bind r source-file ~/.config/tmux/tmux.conf \; display-message "Config reloaded!"
+
+# Mouse and terminal settings
+set -g mouse on
+set -g default-terminal "screen-256color"
+set -ga terminal-overrides ",xterm-256color:Tc"
+
+# Vi mode
+set -g mode-keys vi
+bind-key -T copy-mode-vi 'v' send -X begin-selection
+bind-key -T copy-mode-vi 'y' send -X copy-selection
+
+# Don't rename windows automatically
+set-option -g allow-rename off
+
+# Start windows and panes at 1, not 0
+set -g base-index 1
+setw -g pane-base-index 1
+
+# Renumber windows when a window is closed
+set -g renumber-windows on
+
+# Increase scrollback buffer size
+set -g history-limit 10000
+
+# Reduce escape time for better responsiveness
+set -s escape-time 0
+
+# Enable focus events
+set -g focus-events on
+
+# Custom status bar configuration (similar to your original)
+set -g status-position bottom
+set -g status-justify centre
+set -g status-style 'bg=#1e1e1e fg=#d4d4d4'
+set -g status-left '#[fg=#569cd6]#S '
+set -g status-right '#[fg=#569cd6]%H:%M %d-%b-%y'
+set -g status-left-length 20
+set -g status-right-length 40
+
+# Window status
+set -g window-status-current-style 'bg=#569cd6 fg=#1e1e1e bold'
+set -g window-status-style 'bg=#3c3c3c fg=#d4d4d4'
+set -g window-status-format ' #I:#W '
+set -g window-status-current-format ' #I:#W '
+
+# Pane border
+set -g pane-border-style 'fg=#3c3c3c'
+set -g pane-active-border-style 'fg=#569cd6'
